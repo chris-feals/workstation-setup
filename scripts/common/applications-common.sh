@@ -7,36 +7,36 @@ echo "Installing applications"
 
 # Utilities
 
-brew cask install flycut
-brew cask install shiftit
+brew install vim
+brew install flycut
+brew install shiftit
 echo
 echo "configure shiftit to select 1/3 screen width, 1/2 screen width and 2/3 screen width:"
 echo "`defaults write org.shiftitapp.ShiftIt multipleActionsCycleWindowSizes YES`"
 echo
-brew cask install dash
-brew cask install postman
-brew cask install quicklook-json
+brew install --cask dash
+brew install postman
+brew install quicklook-json
+brew install kryptco/tap/kr
 
 # Terminals
 
-brew cask install iterm2
+brew install iterm2
 
 # Browsers
 
-brew cask install google-chrome
-brew cask install firefox
+brew install google-chrome
+brew install firefox
 
 # Communication
 
-brew cask install slack
+brew install slack
 
 # Text Editors
 
-brew cask install macdown
-brew cask install sublime-text
-brew cask install textmate
-brew cask install macvim
-brew cask install jetbrains-toolbox --force # guard against pre-installed jetbrains-toolbox
-brew cask install visual-studio-code
-brew cask install atom
+brew install macdown
+brew install --cask macvim
+brew install jetbrains-toolbox --force # guard against pre-installed jetbrains-toolbox
+brew install visual-studio-code
+
 set -e

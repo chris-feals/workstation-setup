@@ -1,5 +1,6 @@
 echo
 echo "Configuring iTerm"
+mv ~/Library/Preferences/com.googlecode.iterm2.plist{,.bak} 
 cp files/com.googlecode.iterm2.plist ~/Library/Preferences
 
 echo "Configuring ShiftIt"
@@ -16,5 +17,4 @@ if [ ! -d ~/.vim ]; then
     ~/.vim/bin/install
 fi
 popd
-
 

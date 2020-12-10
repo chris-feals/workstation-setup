@@ -5,9 +5,6 @@
 # Arguments:
 #   - a list of components to install, see scripts/opt-in/ for valid options
 #
-# Environment variables:
-#   - SKIP_ANALYTICS:  Set this to 1 to not send usage data to our Google Analytics account
-#
 
 # Fail immediately if any errors occur
 set -e
@@ -18,26 +15,23 @@ sudo true;
 clear
 
 MY_DIR="$(dirname "$0")"
-SKIP_ANALYTICS=${SKIP_ANALYTICS:-0}
-if (( SKIP_ANALYTICS == 0 )); then
-    clientID=$(od -vAn -N4 -tx  < /dev/urandom)
-    source ${MY_DIR}/scripts/helpers/google-analytics.sh ${clientID} start $@
-else
-    export HOMEBREW_NO_ANALYTICS=1
-fi
+echo "Running scripts from directory: $MY_DIR"
+echo "Create the workspace directory: ~/workspace"
+mkdir -p ~/workspace
 
-# Note: Homebrew needs to be set up first
+# NOTE: scripts are executed in a specific order!  Some later scripts rely on
+# results such as directories or files that were created in earlier scripts.
+source ${MY_DIR}/scripts/common/configure-oh-my-zsh.sh
 source ${MY_DIR}/scripts/common/homebrew.sh
-source ${MY_DIR}/scripts/common/configuration-bash.sh
 
 # Place any applications that require the user to type in their password here
-brew cask install github
-brew cask install zoomus
+brew install github
+brew install zoom
+
+source ${MY_DIR}/scripts/common/applications-common.sh
 
 source ${MY_DIR}/scripts/common/git.sh
 source ${MY_DIR}/scripts/common/git-aliases.sh
-source ${MY_DIR}/scripts/common/cloud-foundry.sh
-source ${MY_DIR}/scripts/common/applications-common.sh
 source ${MY_DIR}/scripts/common/unix.sh
 source ${MY_DIR}/scripts/common/configuration-osx.sh
 source ${MY_DIR}/scripts/common/configurations.sh
@@ -56,6 +50,3 @@ do
 done
 
 source ${MY_DIR}/scripts/common/finished.sh
-if (( SKIP_ANALYTICS == 0 )); then
-    source ${MY_DIR}/scripts/helpers/google-analytics.sh ${clientID} finish $@
-fi

@@ -1,7 +1,10 @@
 echo
-echo "Installing most recent version of NodeJS"
+echo "Installing most recent version of NodeJS and node tooling"
 
 brew install node
+brew install nvm
+brew install yarn
+brew install yarn-completion
 
 echo
 echo "Installing global NodeJS Packages"

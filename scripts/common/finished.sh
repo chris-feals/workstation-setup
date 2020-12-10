@@ -10,15 +10,10 @@ echo "sudo scutil --set LocalHostName newname"
 echo "sudo scutil --set HostName newname"
 
 echo
-echo "You can use 'git pair' (enabled) 'git duet' (enabled) 'git author' (enabled)"
-echo "or 'git with' aka git-together (installed but not enabled)"
+echo "You can use 'git duet' (enabled) to commit with multiple people"
 echo ""
-echo "To enable git together:"
-echo "echo 'alias git=git-together' >> ~/.bash_profile"
-echo "and then follow the configuration instructions at https://github.com/kejadlen/git-together"
-echo ""
-echo "To use git-author:"
-echo "echo 'export GIT_TOGETHER_NO_SIGNOFF=1' >> ~/.bash_profile"
+echo "To use 'git duet', modify the ~/.git-authors file to add your pair"
+echo "See https://github.com/git-duet/git-duet for more info about git duet"
 
 echo
 echo "After checking the above output for any problems, start a new iTerm session to make use of all the installed tools."
